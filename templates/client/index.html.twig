@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ClientController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello  ✅</h1>
+   
+   <div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="people-nearby">
+                {% for client in clients %}
+
+               {% if client.sex == 'M' %}
+               <div class="nearby-user">
+                <div class="row">
+                  <div class="col-md-2 col-sm-2">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="user" class="profile-photo-lg">
+                  </div>
+                  <div class="col-md-7 col-sm-7">
+                    <h5><a href="#" class="profile-link">{{ client.nom }}</a></h5>
+                    <p>{{ client.prenom }}</p>
+                    <p class="text-muted">{{ client.annonce }}</p>
+                     
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    
+                    <a href="{{ path('client_show', {'id': client.id}) }}">   <button class="btn btn-primary pull-right">Show</button></a>
+                    <a href="{{ path('client_edit', {'id': client.id}) }}">   <button class="btn btn-primary pull-right">Edit</button></a>
+                      
+                  </div>
+                </div>
+              </div>
+               {% else %}
+                  
+               <div class="nearby-user">
+                <div class="row">
+                  <div class="col-md-2 col-sm-2">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="user" class="profile-photo-lg">
+                  </div>
+                  <div class="col-md-7 col-sm-7">
+                    <h5><a href="#" class="profile-link">{{ client.nom }}</a></h5>
+                    <p>{{ client.prenom }}</p>
+                    <p class="text-muted">{{ client.annonce }}</p>
+                   
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    <div class="btn-gtoup-vertical" role="group">
+                      <a href="{{ path('client_show', {'id': client.id}) }}">   <button class="btn btn-primary pull-right">Show</button></a>
+                   
+                    </div> 
+                    <br>
+                    <br>
+                    <div class="btn-gtoup-vertical" role="group">
+                      <a href="{{ path('client_edit', {'id': client.id}) }}">   <button class="btn btn-primary pull-right">Edit</button></a>
+                 
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+               {% endif %}
+             
+              {% endfor %}
+            </div>
+    	</div>
+	</div>
+</div>
+<a href="{{ path('client_new') }}">   <button class="btn btn-primary pull-right">New</button></a>
+               
+</div>
+{% endblock %}
+
+
